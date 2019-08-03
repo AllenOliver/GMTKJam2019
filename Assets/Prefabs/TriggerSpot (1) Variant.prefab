@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1544401997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8751866904988737525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0d25556d7c5d1419a0c75d0db4856d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HasBeenTriggered: 0
+  Visual: {fileID: 1044214076806829149}
+  dialogue: {fileID: 11400000, guid: 007965eeb19628f4ba2f37368f85b471, type: 2}
+  Message: You can Now Walk Backwards!
+  PowerToGrant: {fileID: 1544401998}
+--- !u!114 &1544401998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8751866904988737525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2613fd3b1217df34eaedafcad0b15107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &7482031526253117092
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2207155916549054801, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_Name
+      value: TriggerSpot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207155916549054801, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207155916549054804, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207155916549054804, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207155916549054804, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.535547
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207155916549054804, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207155916549054804, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207155916549054804, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207155916549054804, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207155916549054804, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207155916549054804, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207155916549054804, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207155916549054804, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158153465111425429, guid: ae8971b9d6e42d749910847867b28412,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.58
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2207155916549054802, guid: ae8971b9d6e42d749910847867b28412, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: ae8971b9d6e42d749910847867b28412, type: 3}
+--- !u!1 &8751866904988737525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2207155916549054801, guid: ae8971b9d6e42d749910847867b28412,
+    type: 3}
+  m_PrefabInstance: {fileID: 7482031526253117092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1044214076806829149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7613422184045718265, guid: ae8971b9d6e42d749910847867b28412,
+    type: 3}
+  m_PrefabInstance: {fileID: 7482031526253117092}
+  m_PrefabAsset: {fileID: 0}
