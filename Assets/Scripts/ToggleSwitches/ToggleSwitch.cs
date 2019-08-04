@@ -17,6 +17,7 @@ public class ToggleSwitch : MonoBehaviour
                 if (!activated)
                     Toggle();
                 SwapSprite();
+                PlaySound();
                 activated = true;
                 break;
         }
@@ -28,6 +29,8 @@ public class ToggleSwitch : MonoBehaviour
     {
         yield return null;
     }
+
+    protected void PlaySound() => GetComponent<AudioSource>().Play();
 
     protected void SetSprite() => GetComponent<SpriteRenderer>().sprite = sprites[0];
 

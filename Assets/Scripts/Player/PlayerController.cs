@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
     #region Private Variables
 
     private Animator anim;
+
+    private AudioSource sound
+        ;
+
     private bool talking;
     private bool jumpBool;
     private bool isOverlappingInteractable;
@@ -46,7 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         rbody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
+        sound = GetComponent<AudioSource>();
         jumpBool = false;
     }
 
@@ -93,14 +97,15 @@ public class PlayerController : MonoBehaviour
                 }
 
                 Grounded();
-                SetAnimMovementFloat();
+                //anim.SetFloat("Movement", GetPlayerYVelocity());
                 break;
 
             case (false):
                 Grounded();
-                SetAnimMovementFloat();
+                //anim.SetFloat("Movement", GetPlayerYVelocity());
                 return;
         }
+        anim.SetFloat("Movement", GetPlayerYVelocity());
 
         isGrounded = GroundCheck();
     }
@@ -114,6 +119,9 @@ public class PlayerController : MonoBehaviour
             PlayerStop();
             AttackObject.SetActive(true);
             GlobalVariables.canMove = false;
+            sound.pitch = Random.Range(1.1f, 1.3f);
+
+            sound.Play();
             anim.SetTrigger("Attack");
             yield return new WaitForSeconds(.5f);
             AttackObject.SetActive(false);
@@ -143,7 +151,7 @@ public class PlayerController : MonoBehaviour
 
     private bool GroundCheck() => Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
-    private void SetAnimMovementFloat() => anim.SetFloat("Movement", Input.GetAxisRaw("Horizontal"));
+    //private void SetAnimMovementFloat() => anim.SetFloat("Movement", Input.GetAxisRaw("Horizontal"));
 
     /// <summary>
     /// Dies this instance.
@@ -209,4 +217,6 @@ public class PlayerController : MonoBehaviour
         rbody.velocity = new Vector3(0, rbody.velocity.y, 0f);
         anim.SetBool("IsWalking", false);
     }
+
+    public float GetPlayerYVelocity() => (rbody.velocity.y < 0) ? 0f : 1f;
 }

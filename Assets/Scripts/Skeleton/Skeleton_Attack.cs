@@ -16,5 +16,7 @@ public class Skeleton_Attack : Interactable
         yield return new WaitForSeconds(3f);
         anim = GetComponent<Animator>();
         anim.SetTrigger("Attack");
+        yield return new WaitForSeconds(.5f);
+        GetComponent<AudioSource>().Play();
     }
 }

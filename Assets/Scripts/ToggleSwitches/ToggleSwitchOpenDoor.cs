@@ -12,6 +12,7 @@ public class ToggleSwitchOpenDoor : ToggleSwitch
         yield return new WaitForSeconds(.75f);
         base.SwapSprite();
         yield return new WaitForSeconds(1f);
+        Floor.GetComponent<AudioSource>().Play();
         Floor.SetActive(false);
         Explosion.SetActive(true);
     }

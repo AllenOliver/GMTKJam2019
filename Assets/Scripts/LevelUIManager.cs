@@ -32,6 +32,7 @@ public class LevelUIManager : MonoBehaviour
     public GameObject Jump;
     public GameObject Attack;
     public GameObject PausePanel;
+    public AudioSource LevelMusic;
 
     public void PauseGame()
     {
@@ -43,12 +44,14 @@ public class LevelUIManager : MonoBehaviour
             Jump.SetActive(GlobalVariables.canJump);
             Attack.SetActive(GlobalVariables.canAttack);
             paused = true;
+            LevelMusic.volume = .5f;
         }
         else
         {
             PausePanel.SetActive(false);
             GlobalVariables.canMove = true;
             paused = false;
+            LevelMusic.volume = .75f;
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ui = FindObjectOfType<LevelUIManager>();
+        if (!GlobalVariables.audioOn)
+            StopAllSound();
     }
 
     // Update is called once per frame
@@ -17,5 +20,19 @@ public class GameManager : MonoBehaviour
         {
             ui.PauseGame();
         }
+    }
+
+    public void StopAllSound()
+    {
+        GlobalVariables.audioOn = false;
+        var sounds = FindObjectsOfType<AudioSource>().ToList();
+        sounds.ForEach(x => x.enabled = false);
+    }
+
+    public void EnableSound()
+    {
+        GlobalVariables.audioOn = true;
+        var sounds = FindObjectsOfType<AudioSource>().ToList();
+        sounds.ForEach(x => x.enabled = true);
     }
 }

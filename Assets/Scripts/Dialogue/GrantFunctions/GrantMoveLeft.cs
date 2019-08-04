@@ -11,6 +11,7 @@ public class GrantMoveLeft : GrantPowerScript
     private IEnumerator OpenFloor()
     {
         yield return new WaitForSeconds(2f);
+        Floor.GetComponent<AudioSource>().Play();
         Floor.SetActive(false);
         Explode.SetActive(true);
         GlobalVariables.canWalkLeft = true;
