@@ -56,4 +56,12 @@ public class LevelUIManager : MonoBehaviour
     }
 
     #endregion Pause
+
+    #region Update UI On Start
+
+    public TextMeshProUGUI LevelName;
+
+    public void UpdateLevelName(string levelName) => LevelName.text = levelName;
+
+    #endregion Update UI On Start
 }

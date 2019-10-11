@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Globals;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -38,8 +39,8 @@ public class DialogueManager : MonoBehaviour
         NameText.text = "";
         DialogueText.text = "";
         talking = false;
-        DialogueCanvas.gameObject.SetActive(false);
-        Continue.gameObject.SetActive(false);
+        DialogueCanvas.gameObject.Inactive();
+        Continue.gameObject.Inactive();
     }
 
     private void Update()
@@ -55,10 +56,11 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialog)
     {
-        canAdvance = false;
-        talking = true;
         GlobalVariables.canMove = false;
         GlobalVariables.canPause = false;
+        canAdvance = false;
+        talking = true;
+
         FindObjectOfType<PlayerController>().PlayerStop();
         //empty Queue
         sentences.Clear();
@@ -68,7 +70,7 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-        DialogueCanvas.gameObject.SetActive(true);
+        DialogueCanvas.gameObject.Active();
 
         NameText.text = dialog.SpeakerName;
         DisplaySentence();
@@ -82,7 +84,7 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-        Continue.gameObject.SetActive(false);
+        Continue.gameObject.Active();
 
         //pull sentences from Queue
         string output = sentences.Dequeue();
@@ -92,7 +94,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        DialogueCanvas.gameObject.SetActive(false);
+        DialogueCanvas.gameObject.Inactive();
         talking = false;
         GlobalVariables.canMove = true;
         GlobalVariables.canPause = true;
@@ -109,7 +111,7 @@ public class DialogueManager : MonoBehaviour
             textSound.Play();
             yield return new WaitForSeconds(textSound.clip.length - .2f);
         }
-        Continue.gameObject.SetActive(true);
+        Continue.gameObject.Active();
         canAdvance = true;
     }
 }

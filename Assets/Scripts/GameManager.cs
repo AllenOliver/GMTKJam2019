@@ -5,10 +5,14 @@ public class GameManager : MonoBehaviour
 {
     private LevelUIManager ui;
 
+    public LevelData Data;
+
     // Start is called before the first frame update
     private void Start()
     {
+        GlobalVariables.canMove = true;
         ui = FindObjectOfType<LevelUIManager>();
+        ui.UpdateLevelName(Data.LevelName);
         if (!GlobalVariables.audioOn)
             StopAllSound();
     }

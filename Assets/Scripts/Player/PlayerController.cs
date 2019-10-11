@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Globals;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -41,6 +42,8 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
 
     public GameObject AttackObject;
+
+    public int AttackPower;
 
     #endregion Public Variables
 
@@ -116,16 +119,17 @@ public class PlayerController : MonoBehaviour
     {
         if (GlobalVariables.canAttack && GroundCheck())
         {
-            PlayerStop();
-            AttackObject.SetActive(true);
-            GlobalVariables.canMove = false;
-            sound.pitch = Random.Range(1.1f, 1.3f);
-
-            sound.Play();
-            anim.SetTrigger("Attack");
-            yield return new WaitForSeconds(.5f);
-            AttackObject.SetActive(false);
-            GlobalVariables.canMove = true;
+            using (new TogglePlayerAction())
+            {
+                PlayerStop();
+                sound.pitch = Random.Range(1.1f, 1.3f);
+                sound.Play();
+                anim.SetTrigger("Attack");
+                yield return new WaitForSeconds(.25f);
+                AttackObject.Active();
+                yield return new WaitForSeconds(.25f);
+                AttackObject.Inactive();
+            }
         }
     }
 

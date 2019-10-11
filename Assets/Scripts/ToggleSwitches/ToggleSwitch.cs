@@ -6,33 +6,31 @@ public class ToggleSwitch : MonoBehaviour
     public Sprite[] sprites;
 
     private bool activated = false;
+    private SpriteRenderer Sprite;
+    protected AudioSource sounds;
 
-    private void Start() => SetSprite();
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Start()
     {
-        switch (collision.gameObject.tag)
-        {
-            case "Attack":
-                if (!activated)
-                    Toggle();
-                SwapSprite();
-                PlaySound();
-                activated = true;
-                break;
-        }
+        Sprite = GetComponent<SpriteRenderer>();
+        sounds = GetComponent<AudioSource>();
+        SetSprite();
     }
 
-    private void Toggle() => StartCoroutine(ToggleRoutine());
+    public void Toggle() => StartCoroutine(ToggleRoutine());
 
     public virtual IEnumerator ToggleRoutine()
     {
+        if (!activated)
+            Toggle();
+        SwapSprite();
+        PlaySound();
+        activated = true;
         yield return null;
     }
 
-    protected void PlaySound() => GetComponent<AudioSource>().Play();
+    protected void PlaySound() => sounds.Play();
 
-    protected void SetSprite() => GetComponent<SpriteRenderer>().sprite = sprites[0];
+    protected void SetSprite() => Sprite.sprite = sprites[0];
 
-    protected void SwapSprite() => GetComponent<SpriteRenderer>().sprite = sprites[1];
+    protected void SwapSprite() => Sprite.sprite = sprites[1];
 }
