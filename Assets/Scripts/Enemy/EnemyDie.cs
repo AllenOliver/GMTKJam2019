@@ -6,6 +6,7 @@ using Animator = UnityEngine.Animator;
 public class EnemyDie : MonoBehaviour
 {
     private Animator anim;
+    private bool hasDied;
     public GameObject Particles;
 
     [Range(0, 10)] public float ParticleSystemLifetime;
@@ -17,7 +18,11 @@ public class EnemyDie : MonoBehaviour
 
     public void Die()
     {
-        StartCoroutine(DieRoutine());
+        if (!hasDied)
+        {
+            hasDied = true;
+            StartCoroutine(DieRoutine());
+        }
     }
 
     private IEnumerator DieRoutine()

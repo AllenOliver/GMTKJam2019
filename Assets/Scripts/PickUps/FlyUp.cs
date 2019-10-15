@@ -8,5 +8,6 @@ public class FlyUp : MonoBehaviour
     public void Impulse()
     {
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * Power, ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(Vector2.right * Random.Range(-.1f, .1f), ForceMode2D.Impulse);
     }
 }

@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator anim;
 
+    public GameObject Particles;
+
     private AudioSource sound
         ;
 
@@ -72,12 +74,15 @@ public class PlayerController : MonoBehaviour
                 {
                     rbody.velocity = new Vector3(moveSpeed, rbody.velocity.y, 0f);
                     transform.localScale = new Vector3(-1f, 1f, 0f);
+                    Particles.transform.localScale = new Vector3(1f, 1f, 0f);
                     anim.SetBool("IsWalking", true);
                 }
                 else if (Input.GetAxisRaw("Horizontal") < 0f && GlobalVariables.canWalkLeft)
                 {
                     rbody.velocity = new Vector3(-moveSpeed, rbody.velocity.y, 0f);
                     transform.localScale = new Vector3(1f, 1f, 0f);
+                    Particles.transform.localScale = new Vector3(-1f, 1f, 0f);
+
                     anim.SetBool("IsWalking", true);
                 }
                 else
@@ -117,17 +122,17 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator AttackRoutine()
     {
-        if (GlobalVariables.canAttack && GroundCheck())
+        if (GlobalVariables.canAttack)
         {
             using (new TogglePlayerAction())
             {
-                PlayerStop();
+                //PlayerStop();
                 sound.pitch = Random.Range(1.1f, 1.3f);
                 sound.Play();
                 anim.SetTrigger("Attack");
-                yield return new WaitForSeconds(.25f);
+                yield return new WaitForSeconds(.2f);
                 AttackObject.Active();
-                yield return new WaitForSeconds(.25f);
+                yield return new WaitForSeconds(.05f);
                 AttackObject.Inactive();
             }
         }

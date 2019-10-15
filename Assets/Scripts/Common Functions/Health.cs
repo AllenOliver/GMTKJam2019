@@ -1,11 +1,11 @@
-﻿using Assets.Scripts.Globals;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     public int MaxHealth;
     private int CurrentHealth;
+    private bool hasDied;
     public UnityEvent OnDie = new UnityEvent();
 
     private void Start()
@@ -22,7 +22,6 @@ public class Health : MonoBehaviour
             {
                 MaxHealth = GlobalVariables.PlayerMaxHealth;
             }
-            GlobalFunctions.DebugLog($"{MaxHealth}");
         }
 
         #endregion Define Player Logic
@@ -54,7 +53,11 @@ public class Health : MonoBehaviour
         if (result <= 0)
         {
             CurrentHealth = 0;
-            OnDie?.Invoke();
+            if (!hasDied)
+            {
+                hasDied = true;
+                OnDie?.Invoke();
+            }
         }
         else
             CurrentHealth = result;

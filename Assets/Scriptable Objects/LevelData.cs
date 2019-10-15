@@ -5,4 +5,6 @@ public class LevelData : ScriptableObject
 {
     public string LevelName;
     public int LevelIndex;
+    public int CameraSize;
+    public Color AfterImageColor;
 }
