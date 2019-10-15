@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Globals;
+using System.Collections;
 using UnityEngine;
 
 public class ToggleSwitchOpenDoor : ToggleSwitch
@@ -12,8 +13,8 @@ public class ToggleSwitchOpenDoor : ToggleSwitch
         yield return new WaitForSeconds(.75f);
         base.SwapSprite();
         yield return new WaitForSeconds(1f);
-        Floor.GetComponent<AudioSource>().Play();
-        Floor.SetActive(false);
-        Explosion.SetActive(true);
+        base.sounds.Play();
+        Floor.Inactive();
+        Explosion.Inactive();
     }
 }

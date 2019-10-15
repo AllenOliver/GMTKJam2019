@@ -1,16 +1,28 @@
-﻿using System.Linq;
+﻿using Cinemachine;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private LevelUIManager ui;
 
+    public LevelData Data;
+
+    public ParticleSystem AfterImage;
+
+    public CinemachineVirtualCamera Camera;
+
     // Start is called before the first frame update
     private void Start()
     {
+        GlobalVariables.canMove = true;
         ui = FindObjectOfType<LevelUIManager>();
+        ui.UpdateLevelName(Data.LevelName);
         if (!GlobalVariables.audioOn)
             StopAllSound();
+        var ps = AfterImage.GetComponent<ParticleSystem>();
+        var main = ps.main;
+        main.startColor = Data.AfterImageColor;
     }
 
     // Update is called once per frame
